@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
@@ -131,29 +131,29 @@ namespace Televisor3D
             Cara adelante = new Cara(Color.BlueViolet, PrimitiveType.Polygon);
             adelante.addVertice(new Double[] { 0.04f, 0.4f, -0.03f });
             adelante.addVertice(new Double[] { 0.22f, 0.4f, -0.03f });
-            adelante.addVertice(new Double[] { 0.22f, 0.7f, -0.03f });
-            adelante.addVertice(new Double[] { 0.26f, 0.9f, -0.03f });
-            adelante.addVertice(new Double[] { 0.06f, 0.9f, -0.03f });
+            adelante.addVertice(new Double[] { 0.24f, 0.8f, -0.03f });
+            adelante.addVertice(new Double[] { 0.26f, 1.0f, -0.03f });
+            adelante.addVertice(new Double[] { 0.06f, 1.0f, -0.03f });
 
             Cara atras = new Cara(Color.Pink, PrimitiveType.Polygon);
-            atras.addVertice(new Double[] { 0.04f, 0.4f, 0f });
-            atras.addVertice(new Double[] { 0.22f, 0.4f, 0f });
-            atras.addVertice(new Double[] { 0.22f, 0.7f, 0f });
-            atras.addVertice(new Double[] { 0.26f, 0.9f, 0f });
-            atras.addVertice(new Double[] { 0.06f, 0.9f, 0f });
+            atras.addVertice(new Double[] { 0.04f, 0.4f, 0.03f });
+            atras.addVertice(new Double[] { 0.22f, 0.4f, 0.03f });
+            atras.addVertice(new Double[] { 0.24f, 0.8f, 0.03f });
+            atras.addVertice(new Double[] { 0.26f, 1.0f, 0.03f });
+            atras.addVertice(new Double[] { 0.06f, 1.0f, 0.03f });
 
             Cara lteral1 = new Cara(Color.DarkMagenta, PrimitiveType.Polygon);
-            lteral1.addVertice(new Double[] { 0.04f, 0.4f, 0f });
+            lteral1.addVertice(new Double[] { 0.04f, 0.4f, 0.03f });
             lteral1.addVertice(new Double[] { 0.04f, 0.4f, -0.03f });
-            lteral1.addVertice(new Double[] { 0.06f, 0.9f, -0.03f });
-            lteral1.addVertice(new Double[] { 0.06f, 0.9f, 0f });
+            lteral1.addVertice(new Double[] { 0.06f, 1.0f, -0.03f });
+            lteral1.addVertice(new Double[] { 0.06f, 1.0f, 0.03f });
 
             Cara lteral2 = new Cara(Color.DarkMagenta, PrimitiveType.Polygon);
-            lteral2.addVertice(new Double[] { 0.22f, 0.4f, 0f });
-            lteral2.addVertice(new Double[] { 0.22f, 0.7f, 0f });
-            lteral2.addVertice(new Double[] { 0.26f, 0.9f, 0f });
-            lteral2.addVertice(new Double[] { 0.26f, 0.9f, -0.03f });
-            lteral2.addVertice(new Double[] { 0.22f, 0.7f, -0.03f });
+            lteral2.addVertice(new Double[] { 0.22f, 0.4f, 0.03f });
+            lteral2.addVertice(new Double[] { 0.24f, 0.8f, 0.03f });
+            lteral2.addVertice(new Double[] { 0.26f, 1.0f, 0.03f });
+            lteral2.addVertice(new Double[] { 0.26f, 1.0f, -0.03f });
+            lteral2.addVertice(new Double[] { 0.24f, 0.8f, -0.03f });
             lteral2.addVertice(new Double[] { 0.22f, 0.4f, -0.03f });
 
             jarron.addCara(adelante);
@@ -211,6 +211,28 @@ namespace Televisor3D
             pa2.addVertice(new Double[] { 0.9f, 0.7f, -0.52f });
             pa2.addVertice(new Double[] { 0.9f, 0.7f, 0f });
 
+            // Parlante izquierdo
+            Cara parlanteIzquierdo = new Cara(Color.Black, PrimitiveType.Polygon);
+            for (int i = 0; i < 360; i += 10)
+            {
+                double radianes = i * Math.PI / 180.0; // Convertir grados a radianes
+                double x = 0.1 * Math.Cos(radianes);
+                double y = 0.1 * Math.Sin(radianes);
+                parlanteIzquierdo.addVertice(new Double[] { x + 0.2, y + 0.35, -0.52 }); // Ajustar las coordenadas
+            }
+
+            // Parlante derecho
+            Cara parlanteDerecho = new Cara(Color.Black, PrimitiveType.Polygon);
+            for (int i = 0; i < 360; i += 10)
+            {
+                double radianes = i * Math.PI / 180.0; // Convertir grados a radianes
+                double x = 0.1 * Math.Cos(radianes);
+                double y = 0.1 * Math.Sin(radianes);
+                parlanteDerecho.addVertice(new Double[] { x + 0.7, y + 0.35, -0.52 }); // Ajustar las coordenadas
+            }
+
+            reproductor.addCara(parlanteIzquierdo);
+            reproductor.addCara(parlanteDerecho);
             reproductor.addCara(ad);
             reproductor.addCara(aa);
             reproductor.addCara(p1);
@@ -223,3 +245,4 @@ namespace Televisor3D
         }
     }
 }
+
